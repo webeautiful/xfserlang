@@ -1,4 +1,4 @@
-ejabberd的线上部署之二进制安装
+#ejabberd的线上部署之二进制安装
 
 ##将[ejabberd15.04.run][1]通过scp命令上传到线上服务器
 ##root账号下安装 `./ejabberd15.04.run`
@@ -10,7 +10,9 @@ ejabberd的线上部署之二进制安装
 * 集群：开启集群时,设置集群节点名ejabberd@xxx
 
 ##启动ejabberd
-./bin/ejabberdctl start
+```
+$ ./bin/ejabberdctl start
+```
 
 ## web管理后台
 

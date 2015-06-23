@@ -8,10 +8,10 @@
 
 认证方式:
 
-`
+```
 ##auth_method: internal
 auth_method: odbc
-`
+```
 
 mysql连接配置:
 
@@ -26,11 +26,11 @@ odbc_password: "password"
 模块配置
 
 >mod_last  - 最后在线日期和时间
-mod_offline - 离线消息
-mod_roster - 通讯录
-mod_vcard - 个人资料
-mod_muc - 聊天室
-mod_private - 私有XML存储
+>mod_offline - 离线消息
+>mod_roster - 通讯录
+>mod_vcard - 个人资料
+>mod_muc - 聊天室
+>mod_private - 私有XML存储
 >mod_privacy - 用户黑名单
 
 以上模块均支持mysql存储，配置方法：添加db_type: odbc属性
