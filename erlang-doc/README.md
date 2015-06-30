@@ -1,4 +1,5 @@
-# erlang学习笔记
+ erlang学习笔记
+===
 * [erlang/otp源码][1]
 * [erlang/otp源码阅读指引][2]
 
