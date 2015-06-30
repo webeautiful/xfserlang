@@ -1,6 +1,6 @@
 #BIFs之string处理
 
-```erlang
+```Erlang
 >string:strip("  test  ") // "test"
 ```
 ##参考
