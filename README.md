@@ -6,3 +6,4 @@ My world of Erlang
 * [Erlang技术分享](http://www.kongqingquan.com/)
 * [Erlang Resources](http://site.douban.com/204209/)
 * [回头再说 坚强2002的博客](http://www.cnblogs.com/me-sa/)
+* [夢沉抹大拉](http://blog.imaou.com/)
