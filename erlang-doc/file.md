@@ -45,14 +45,14 @@ file模块的扩展，提供了更多的实用工具，在file模块基础上构
 * [io模块源码][4]
 
 ######格式化输出命令
-|命令符|说明|
-|--|--------|
-|~f|浮点数|
-|~c|ascii码|
-|~s|字符串|
-|~w|输出erlang term|
-|~p|输出erlang term, 以可打印格式输出|
-|~n|换行符|
+命令符|   说 明
+------|---------------------------------
+~f    |浮点数
+~c    |ascii码
+~s    |字符串
+~w    |输出erlang term
+~p    |输出erlang term, 以可打印格式输出
+~n    |换行符
 
 
 [1]: https://github.com/erlang/otp/blob/maint/lib/kernel/src/file.erl
