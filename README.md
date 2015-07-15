@@ -22,3 +22,6 @@ My world of Erlang
 * [Learn You Some Erlang for great good!](http://learnyousomeerlang.com/)
 * [糯米团子 - ejabberd](http://developerworks.github.io/)
 * [移动 IM 学习笔记](https://ruby-china.org/topics/22530)
+* [Erlang Central](https://erlangcentral.org/)
+* [ericsson](http://www.ericsson.com/)
+* [Erlang并发编程](http://svn.liancheng.info/cpie-cn/trunk/.build/html/index.html)
