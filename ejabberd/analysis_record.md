@@ -40,8 +40,8 @@
 ```
 
 * room - 聊天室名(聊天室的唯一标识)
-* host - 聊天室server,如:`conference.192.168.1.67`
-* server_host - 聊天服务器ip
+* host - muc服务名,如:`conference.192.168.1.67`
+* server_host - 虚拟主机名(节点名)
 * jid - 聊天室room,host组成的#jid{}
 * config - 聊天室的配置项集合,数据类型为record
 * subject - 聊天室名称/主题
