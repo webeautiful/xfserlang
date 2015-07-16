@@ -6,6 +6,16 @@
 
 ### 群聊(muc)
 ```erlang
+-type role() :: moderator | participant | visitor | none.
+
+-record(user,
+{
+    jid :: jid(),
+    nick :: binary(),
+    role :: role(),
+    last_presence :: xmlel()
+}).
+
 -record(state,
 {
     room                    = <<"">> :: binary(),
@@ -29,10 +39,16 @@
 }).
 ```
 
-* jid - 聊天室jid
+* room - 聊天室名(聊天室的唯一标识)
+* host - 聊天室server,如:`conference.192.168.1.67`
+* server_host - 聊天服务器ip
+* jid - 聊天室room,host组成的#jid{}
 * config - 聊天室的配置项集合,数据类型为record
 * subject - 聊天室名称/主题
-* nicks - 一个Key-Value字典，Key为用户在聊天室中的`昵称`，Value为`{User, Server, Resource}`组成的元组
+* nicks - 用户昵称管理,一个Key-Value字典，Key为用户在聊天室中的`昵称`，Value为`{User, Server, Resource}`组成的三元组
+* users - 用户角色管理,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Vaule为记录#user{}
+* affiliations - 隶属关系管理,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Value为`member | admin | owner | none`
+* activity - Treap(带优先级的平衡二叉树tree+heap)实现的Key-Value存储结构,Key为`{Luser, Lserver, Lresource}`,Value为记录#activity{}
 
 ```erlang
 -record(config,
@@ -66,3 +82,4 @@
 ```
 
 * allow_private_messages
+
