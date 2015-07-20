@@ -8,15 +8,50 @@
 
 **mod_muc_room.hrl**
 
+##### 聊天室配置
+```erlang
+-record(config,
+{
+    title                                = <<"">> :: binary(),
+    description                          = <<"">> :: binary(),
+    allow_change_subj                    = true :: boolean(),
+    allow_query_users                    = true :: boolean(),
+    allow_private_messages               = true :: boolean(),
+    allow_private_messages_from_visitors = anyone :: anyone | moderators | nobody ,
+    allow_visitor_status                 = true :: boolean(),
+    allow_visitor_nickchange             = true :: boolean(),
+    public                               = true :: boolean(),
+    public_list                          = true :: boolean(),
+    persistent                           = false :: boolean(),
+    moderated                            = true :: boolean(),
+    captcha_protected                    = false :: boolean(),
+    members_by_default                   = true :: boolean(),
+    members_only                         = false :: boolean(),
+    allow_user_invites                   = false :: boolean(),
+    password_protected                   = false :: boolean(),
+    password                             = <<"">> :: binary(),
+    anonymous                            = true :: boolean(),
+    allow_voice_requests                 = true :: boolean(),
+    voice_request_min_interval           = 1800 :: non_neg_integer(),
+    max_users                            = ?MAX_USERS_DEFAULT :: non_neg_integer() | none,
+    logging                              = false :: boolean(),
+    vcard                                = <<"">> :: binary(),
+    captcha_whitelist                    = (?SETS):empty() :: ?TGB_SET
+}).
+```
+* allow_private_messages
+
+##### 聊天室状态
+
 ```erlang
 -type role() :: moderator | participant | visitor | none.
 
--record(user,
+-record(user,         % 用户在聊天室中个人信息(?DICT)
 {
     jid :: jid(),     % online用户#jid{}
     nick :: binary(), % online用户在聊天室中的昵称
     role :: role(),   % 用户在聊天室中的角色
-    last_presence :: xmlel() %#xmlel{}
+    last_presence :: xmlel() % #xmlel{}
 }).
 
 -record(state,
@@ -54,44 +89,12 @@
 * activity - Treap(带优先级的平衡二叉树tree+heap)实现的Key-Value存储结构,Key为`{Luser, Lserver, Lresource}`,Value为记录#activity{}
 
 ```erlang
--record(config,
-{
-    title                                = <<"">> :: binary(),
-    description                          = <<"">> :: binary(),
-    allow_change_subj                    = true :: boolean(),
-    allow_query_users                    = true :: boolean(),
-    allow_private_messages               = true :: boolean(),
-    allow_private_messages_from_visitors = anyone :: anyone | moderators | nobody ,
-    allow_visitor_status                 = true :: boolean(),
-    allow_visitor_nickchange             = true :: boolean(),
-    public                               = true :: boolean(),
-    public_list                          = true :: boolean(),
-    persistent                           = false :: boolean(),
-    moderated                            = true :: boolean(),
-    captcha_protected                    = false :: boolean(),
-    members_by_default                   = true :: boolean(),
-    members_only                         = false :: boolean(),
-    allow_user_invites                   = false :: boolean(),
-    password_protected                   = false :: boolean(),
-    password                             = <<"">> :: binary(),
-    anonymous                            = true :: boolean(),
-    allow_voice_requests                 = true :: boolean(),
-    voice_request_min_interval           = 1800 :: non_neg_integer(),
-    max_users                            = ?MAX_USERS_DEFAULT :: non_neg_integer() | none,
-    logging                              = false :: boolean(),
-    vcard                                = <<"">> :: binary(),
-    captcha_whitelist                    = (?SETS):empty() :: ?TGB_SET
-}).
-```
-
-* allow_private_messages
-
-```erlang
 -record(muc_online_users, {us = {<<>>, <<>>} :: {binary(), binary()},
                            resource = <<>> :: binary() | '_',
                            room = <<>> :: binary() | '_' | '$1',
                            host = <<>> :: binary() | '_' | '$2'}).
 
+##### 聊天室中的在线用户(ets)
 -type muc_online_users() :: #muc_online_users{}.
 ```
 * us - {用户名，server名}组成的二元组
