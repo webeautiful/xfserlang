@@ -88,13 +88,13 @@
 * affiliations - 用户在聊天室中的岗位,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Value为`member | admin | owner | none`
 * activity - Treap(带优先级的平衡二叉树tree+heap)实现的Key-Value存储结构,Key为`{Luser, Lserver, Lresource}`,Value为记录#activity{}
 
+##### 聊天室中的在线用户(ets)
 ```erlang
 -record(muc_online_users, {us = {<<>>, <<>>} :: {binary(), binary()},
                            resource = <<>> :: binary() | '_',
                            room = <<>> :: binary() | '_' | '$1',
                            host = <<>> :: binary() | '_' | '$2'}).
 
-##### 聊天室中的在线用户(ets)
 -type muc_online_users() :: #muc_online_users{}.
 ```
 * us - {用户名，server名}组成的二元组
