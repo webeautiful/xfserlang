@@ -90,10 +90,13 @@
 
 ##### 聊天室中的在线用户(ets)
 ```erlang
--record(muc_online_users, {us = {<<>>, <<>>} :: {binary(), binary()},
-                           resource = <<>> :: binary() | '_',
-                           room = <<>> :: binary() | '_' | '$1',
-                           host = <<>> :: binary() | '_' | '$2'}).
+-record(muc_online_users,
+{
+    us = {<<>>, <<>>} :: {binary(), binary()},
+    resource = <<>> :: binary() | '_',
+    room = <<>> :: binary() | '_' | '$1',
+    host = <<>> :: binary() | '_' | '$2'
+}).
 
 -type muc_online_users() :: #muc_online_users{}.
 ```
