@@ -6,7 +6,7 @@
 
 ### 群聊(muc)
 
-**mod_muc_room.erl**
+**mod_muc_room.hrl**
 
 ```erlang
 -type role() :: moderator | participant | visitor | none.
@@ -42,7 +42,7 @@
 }).
 ```
 * room - 聊天室名(聊天室的唯一标识)
-* host - muc服务名,如:`conference.192.168.1.67`
+* host - 群聊服务名,如:<<"conference.192.168.1.67">>
 * server_host - 虚拟主机名(节点名)
 * access - 由mod_muc模块的配置项access,access_create,access_admin,access_persistent的值组成的四元组
 * jid - 由room,host,聊天室昵称组成的记录#jid{}
@@ -86,3 +86,15 @@
 
 * allow_private_messages
 
+```erlang
+-record(muc_online_users, {us = {<<>>, <<>>} :: {binary(), binary()},
+                           resource = <<>> :: binary() | '_',
+                           room = <<>> :: binary() | '_' | '$1',
+                           host = <<>> :: binary() | '_' | '$2'}).
+
+-type muc_online_users() :: #muc_online_users{}.
+```
+* us - {用户名，server名}组成的二元组
+* resource - 客户端连接资源
+* room - 聊天室名
+* host - 群聊服务名,如:<<"conference.192.168.1.67">>
