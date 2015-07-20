@@ -5,15 +5,18 @@
 >说明：该文档并不能做到一蹴而就，而是在阅读源码的过程中，对程序的理解,一点点积累和完善的结果
 
 ### 群聊(muc)
+
+**mod_muc_room.erl**
+
 ```erlang
 -type role() :: moderator | participant | visitor | none.
 
 -record(user,
 {
-    jid :: jid(),
-    nick :: binary(),
-    role :: role(),
-    last_presence :: xmlel()
+    jid :: jid(),     % online用户#jid{}
+    nick :: binary(), % online用户在聊天室中的昵称
+    role :: role(),   % 用户在聊天室中的角色
+    last_presence :: xmlel() %#xmlel{}
 }).
 
 -record(state,
@@ -38,16 +41,16 @@
     room_queue              = queue:new() :: ?TQUEUE
 }).
 ```
-
 * room - 聊天室名(聊天室的唯一标识)
 * host - muc服务名,如:`conference.192.168.1.67`
 * server_host - 虚拟主机名(节点名)
-* jid - 聊天室room,host组成的#jid{}
+* access - 由mod_muc模块的配置项access,access_create,access_admin,access_persistent的值组成的四元组
+* jid - 由room,host,聊天室昵称组成的记录#jid{}
 * config - 聊天室的配置项集合,数据类型为record
 * subject - 聊天室名称/主题
 * nicks - 用户昵称管理,一个Key-Value字典，Key为用户在聊天室中的`昵称`，Value为`{User, Server, Resource}`组成的三元组
-* users - 用户角色管理,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Vaule为记录#user{}
-* affiliations - 隶属关系管理,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Value为`member | admin | owner | none`
+* users - 一个Key-Value字典,存储在线用户信息,Key为`{Luser, Lserver, Lresource}`组成的三元组,Vaule为记录#user{}
+* affiliations - 用户在聊天室中的岗位,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Value为`member | admin | owner | none`
 * activity - Treap(带优先级的平衡二叉树tree+heap)实现的Key-Value存储结构,Key为`{Luser, Lserver, Lresource}`,Value为记录#activity{}
 
 ```erlang
