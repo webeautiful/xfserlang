@@ -87,6 +87,7 @@
 * users - 一个Key-Value字典,存储在线用户信息,Key为`{Luser, Lserver, Lresource}`组成的三元组,Vaule为记录#user{}
 * affiliations - 用户在聊天室中的岗位,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Value为`member | admin | owner | none`
 * activity - Treap(带优先级的平衡二叉树tree+heap)实现的Key-Value存储结构,Key为`{Luser, Lserver, Lresource}`,Value为记录#activity{}
+* room_shaper - 聊天室流量控制,存储的数据为通过ets存储于内存的记录#maxrate{},该记录由maxrate,lastrate,lasttime组成
 
 ##### 聊天室中的在线用户(ets)
 ```erlang
