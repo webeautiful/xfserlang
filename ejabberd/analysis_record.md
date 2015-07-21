@@ -80,7 +80,7 @@
 * host - 群聊服务名,如:<<"conference.192.168.1.67">>
 * server_host - 虚拟主机名(节点名)
 * access - 由mod_muc模块的配置项access,access_create,access_admin,access_persistent的值组成的四元组
-* jid - 由room,host,聊天室昵称组成的记录#jid{}
+* jid - 由room,host,聊天室昵称组成的记录#jid{}(标准的JID格式:#jid{user,server,resource,luser,lserver,lresource})
 * config - 聊天室的配置项集合,数据类型为record
 * subject - 聊天室名称/主题
 * nicks - 用户昵称管理,一个Key-Value字典，Key为用户在聊天室中的`昵称`，Value为`{User, Server, Resource}`组成的三元组
