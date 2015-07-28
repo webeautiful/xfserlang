@@ -10,6 +10,7 @@
 
 ##### 聊天室配置
 ```erlang
+-define(MAX_USERS_DEFAULT, 200).
 -record(config,
 {
     title                                = <<"">> :: binary(),
@@ -40,6 +41,7 @@
 }).
 ```
 * allow_private_messages
+* max_users-单独设置每个聊天室可容纳的人数,该值不能超过`mod_muc`模块全局配置项`max_users`的值
 
 ##### 聊天室状态
 
@@ -83,11 +85,13 @@
 * jid - 由room,host,聊天室昵称组成的记录#jid{}(标准的JID格式:#jid{user,server,resource,luser,lserver,lresource})
 * config - 聊天室的配置项集合,数据类型为record
 * subject - 聊天室名称/主题
-* nicks - 用户昵称管理,一个Key-Value字典，Key为用户在聊天室中的`昵称`，Value为`{User, Server, Resource}`组成的三元组
-* users - 一个Key-Value字典,存储在线用户信息,Key为`{Luser, Lserver, Lresource}`组成的三元组,Vaule为记录#user{}
-* affiliations - 用户在聊天室中的岗位,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Value为`member | admin | owner | none`
+* nicks - 当前聊天室用户昵称管理,一个Key-Value字典，Key为用户在聊天室中的`昵称`，Value为`{User, Server, Resource}`组成的三元组
+* users - 当前聊天室中用户信息，一个Key-Value字典,存储在线用户信息,Key为`{Luser, Lserver, Lresource}`组成的三元组,Vaule为记录#user{}
+* affiliations - 聊天室与用户的隶属关系,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Value为`member | admin | owner | none`
 * activity - Treap(带优先级的平衡二叉树tree+heap)实现的Key-Value存储结构,Key为`{Luser, Lserver, Lresource}`,Value为记录#activity{}
 * room_shaper - 聊天室流量控制,存储的数据为通过ets存储于内存的记录#maxrate{},该记录由maxrate,lastrate,lasttime组成
+* history - 按序存储聊天室的历史消息，记录#lqueue{queue = Q, len = L, max = M},queue为erlang内部模块queue实现的队列,单条队列数据是由消息发送者nick,消息体#xmlel{},发送时间以及消息体size组成的元组
+* room_queue - erlang内部模块queue实现的队列
 
 ##### 聊天室中的在线用户(ets)
 ```erlang
