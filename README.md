@@ -25,3 +25,4 @@ My world of Erlang
 * [Erlang Central](https://erlangcentral.org/)
 * [ericsson](http://www.ericsson.com/)
 * [Erlang并发编程](http://svn.liancheng.info/cpie-cn/trunk/.build/html/index.html)
+* [erlang技术与应用](http://blog.csdn.net/column/details/erlang.html)
