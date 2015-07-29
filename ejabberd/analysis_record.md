@@ -85,8 +85,8 @@
 * jid - 由room,host,聊天室昵称组成的记录#jid{}(标准的JID格式:#jid{user,server,resource,luser,lserver,lresource})
 * config - 聊天室的配置项集合,数据类型为record
 * subject - 聊天室名称/主题
-* nicks - 当前聊天室用户昵称管理,一个Key-Value字典，Key为用户在聊天室中的`昵称`，Value为`{User, Server, Resource}`组成的三元组
-* users - 当前聊天室中用户信息，一个Key-Value字典,存储在线用户信息,Key为`{Luser, Lserver, Lresource}`组成的三元组,Vaule为记录#user{}
+* nicks - 一个Key-Value字典，当前聊天室用户昵称管理,Key为用户在聊天室中的`昵称`，Value是`{User, Server, Resource}`三元组构成的列表
+* users - 一个Key-Value字典,存储当前聊天室中的用户信息，Key为`{Luser, Lserver, Lresource}`组成的三元组,Vaule为记录#user{}
 * affiliations - 聊天室与用户的隶属关系,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Value为`member | admin | owner | none`
 * activity - Treap(带优先级的平衡二叉树tree+heap)实现的Key-Value存储结构,Key为`{Luser, Lserver, Lresource}`,Value为记录#activity{}
 * room_shaper - 聊天室流量控制,存储的数据为通过ets存储于内存的记录#maxrate{},该记录由maxrate,lastrate,lasttime组成
