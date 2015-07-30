@@ -40,7 +40,8 @@
     captcha_whitelist                    = (?SETS):empty() :: ?TGB_SET
 }).
 ```
-* allow_private_messages
+* allow_private_messages 设置聊天室是否允许私聊
+* allow_private_messages_from_visitors 设置访客能够发起私聊的对象
 * max_users-单独设置每个聊天室可容纳的人数,该值不能超过`mod_muc`模块全局配置项`max_users`的值
 
 ##### 聊天室状态
@@ -82,11 +83,11 @@
 * host - 群聊服务名,如:<<"conference.192.168.1.67">>
 * server_host - 虚拟主机名(节点名)
 * access - 由mod_muc模块的配置项access,access_create,access_admin,access_persistent的值组成的四元组
-* jid - 由room,host,聊天室昵称组成的记录#jid{}(标准的JID格式:#jid{user,server,resource,luser,lserver,lresource})
+* jid - 由room,host,用户昵称组成的记录#jid{}(标准的JID格式:#jid{user,server,resource,luser,lserver,lresource})
 * config - 聊天室的配置项集合,数据类型为record
 * subject - 聊天室名称/主题
 * nicks - 一个Key-Value字典，当前聊天室用户昵称管理,Key为用户在聊天室中的`昵称`，Value是`{User, Server, Resource}`三元组构成的列表
-* users - 一个Key-Value字典,存储当前聊天室中的用户信息，Key为`{Luser, Lserver, Lresource}`组成的三元组,Vaule为记录#user{}
+* users - 一个Key-Value字典,存储当前聊天室的online用户，Key为`{Luser, Lserver, Lresource}`组成的三元组,Vaule为记录#user{}
 * affiliations - 聊天室与用户的隶属关系,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Value为`member | admin | owner | none`
 * activity - Treap(带优先级的平衡二叉树tree+heap)实现的Key-Value存储结构,Key为`{Luser, Lserver, Lresource}`,Value为记录#activity{}
 * room_shaper - 聊天室流量控制,存储的数据为通过ets存储于内存的记录#maxrate{},该记录由maxrate,lastrate,lasttime组成
