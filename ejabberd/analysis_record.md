@@ -90,7 +90,7 @@
 * affiliations - 聊天室与用户的隶属关系,一个Key-Value字典,Key为`{Luser, Lserver, Lresource}`组成的三元组,Value为`member | admin | owner | none`
 * activity - Treap(带优先级的平衡二叉树tree+heap)实现的Key-Value存储结构,Key为`{Luser, Lserver, Lresource}`,Value为记录#activity{}
 * room_shaper - 聊天室流量控制,存储的数据为通过ets存储于内存的记录#maxrate{},该记录由maxrate,lastrate,lasttime组成
-* history - 按序存储聊天室的历史消息，记录#lqueue{queue = Q, len = L, max = M},queue为erlang内部模块queue实现的队列,单条队列数据是由消息发送者nick,消息体#xmlel{},发送时间以及消息体size组成的元组
+* history - 按序存储max条历史消息，记录#lqueue{queue = Q, len = L, max = M},queue为erlang内部模块queue实现的队列,单条队列数据是由{消息发送者nick,消息体#xmlel{},聊天室是否有subject,发送时间以及消息体size}组成的元组;max的值为mod_muc的配置项history_size的值
 * room_queue - erlang内部模块queue实现的队列
 
 ##### 聊天室中的在线用户(ets)
