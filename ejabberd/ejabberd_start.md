@@ -17,6 +17,7 @@ epmd在Erlang集群中的作用相当于dns,完成Erlang节点和IP,端口的映
 * -noshell
 * -pa ../ebin 指定Erlang二进制文件(*.beam)所在目录.
 * -mnesia dir "/opt/ejabberd-15.04/database/ejabberd@rabbitmq2" 指定Mnesia数据库位置
+* -s ejabberd 通过`-s`指定应用的入口点
 * -sasl sasl_error_logger {file,"/opt/ejabberd-15.04/logs/erlang.log"} Erlang/OTP系统日志文件的路径
 * -smp [auto | true | false] SMP(多CPU)支持
 * -remsh ejabberd@host  开启一个连接远程节点的Erlang shell
