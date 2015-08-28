@@ -11,6 +11,9 @@ epmd在Erlang集群中的作用相当于dns,完成Erlang节点和IP,端口的映
 命令行参数:
 * -K [true|false] 内核轮询
 * -P 250000  Erlang进程的最大数量进程的最大数
+* -root 指定ejabberd安装位置
+* -progname 指定ejabberd执行程序位置
+* -home /root 运行该程序linux账号的家目录
 * -sname ejabberd@rabbitmq2 说明Ejabberd服务运行在本机Erlang节点ejabberd@rabbitmq2上
 * -noshell
 * -noinput 确保Erlang系统不尝试读任何输入. 运行守护进程和后台进程时有用

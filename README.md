@@ -26,3 +26,4 @@ My world of Erlang
 * [ericsson](http://www.ericsson.com/)
 * [Erlang并发编程](http://svn.liancheng.info/cpie-cn/trunk/.build/html/index.html)
 * [erlang技术与应用](http://blog.csdn.net/column/details/erlang.html)
+* [gashero](http://gashero.yeax.com/?cat=6)
