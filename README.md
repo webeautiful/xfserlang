@@ -27,3 +27,4 @@ My world of Erlang
 * [Erlang并发编程](http://svn.liancheng.info/cpie-cn/trunk/.build/html/index.html)
 * [erlang技术与应用](http://blog.csdn.net/column/details/erlang.html)
 * [gashero](http://gashero.yeax.com/?cat=6)
+* [learn-you-some-erlang-kindle](https://github.com/igstan/learn-you-some-erlang-kindle)
