@@ -28,3 +28,4 @@ My world of Erlang
 * [erlang技术与应用](http://blog.csdn.net/column/details/erlang.html)
 * [gashero](http://gashero.yeax.com/?cat=6)
 * [learn-you-some-erlang-kindle](https://github.com/igstan/learn-you-some-erlang-kindle)
+* [用 rebar 来构建、编译、测试、发布 Erlang 应用程序](http://dhq.me/build-compile-eunit-release-erlang-application-with-rebar)
