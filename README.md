@@ -30,3 +30,5 @@ My world of Erlang
 * [learn-you-some-erlang-kindle](https://github.com/igstan/learn-you-some-erlang-kindle)
 * [用 rebar 来构建、编译、测试、发布 Erlang 应用程序](http://dhq.me/build-compile-eunit-release-erlang-application-with-rebar)
 * [siyao zheng](http://www.cnblogs.com/zhengsyao/)
+* [Erlang编程(2)书中源码](https://pragprog.com/titles/jaerlang2/source_code)
+* [Erlang编程第二版书中源码](https://github.com/bf4/book_code/tree/master/jaerlang2/code)
